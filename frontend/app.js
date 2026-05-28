@@ -192,3 +192,24 @@ window.onload = function(){
         listarOS();
     }
 };
+window.exportarExcel = function () {
+
+    fetch(API_URL + "/os/")
+    .then(res => res.json())
+    .then(data => {
+
+        let csv = "ID;Cliente;Descrição;Status\n";
+
+        data.forEach(os => {
+            csv += `${os.id};${os.cliente};${os.descricao};${os.status}\n`;
+        });
+
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "ordens_servico.csv");
+        link.click();
+    });
+};
