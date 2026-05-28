@@ -7,23 +7,15 @@
     <!-- ✅ Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- ✅ JS -->
-    <script src="app.js"></script>
-
     <style>
         body {
             font-family: Arial;
-        }
-
-        .bg-main {
             background: #0f172a;
-            min-height: 100vh;
         }
 
         .card-dark {
             background: #1e293b;
             color: white;
-            border-radius: 10px;
         }
 
         .form-control {
@@ -36,9 +28,11 @@
             color: #cbd5f5;
         }
     </style>
+
+    <script src="app.js"></script>
 </head>
 
-<body class="bg-main">
+<body>
 
 <!-- ================= LOGIN ================= -->
 <div id="login-box" class="container mt-5">
@@ -55,20 +49,27 @@
 </div>
 
 <!-- ================= APP ================= -->
-<div id="app" style="display:none;">
+<div id="app" style="display:none;" class="text-light">
 
     <!-- TOPO -->
-    <div class="p-3 border-bottom text-white">
+    <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
         <h5>
             Malato'sTech | <span class="text-info">OS Manager</span>
-            <span class="badge bg-secondary float-end">v2.7 LAB</span>
         </h5>
+
+        <div>
+            <span id="user-info"></span>
+
+            <button onclick="logout()" class="btn btn-danger btn-sm ms-2">
+                Sair
+            </button>
+        </div>
     </div>
 
     <!-- BUSCA -->
     <div class="p-3">
         <input class="form-control"
-            placeholder="🔎 Buscar por cliente, equipamento, orçamento...">
+            placeholder="🔎 Buscar por cliente...">
     </div>
 
     <!-- CONTEÚDO -->
@@ -77,16 +78,11 @@
         <!-- FORM -->
         <div class="card card-dark p-3" style="width: 300px;">
 
-            <h5>🛠 Nova Ordem de Serviço</h5>
+            <h5>🛠 Nova OS</h5>
 
             <input id="cliente" class="form-control mb-2" placeholder="Cliente">
-            <input id="equipamento" class="form-control mb-2" placeholder="Equipamento">
-            <textarea id="descricao" class="form-control mb-2" placeholder="Defeito"></textarea>
-
-            <input id="orcamento" class="form-control mb-2" placeholder="Orçamento (R$)">
-            <input id="data" class="form-control mb-2" placeholder="Data">
-
-            <input id="status" class="form-control mb-3" placeholder="Status">
+            <input id="descricao" class="form-control mb-2" placeholder="Defeito">
+            <input id="status" class="form-control mb-2" placeholder="Status">
 
             <button onclick="criarOS()" class="btn btn-primary w-100">
                 Criar OS
@@ -98,8 +94,9 @@
         <div class="card card-dark p-3 flex-grow-1">
 
             <div class="d-flex justify-content-between mb-3">
-                <h5>📊 Atendimentos no Laboratório</h5>
-                <button class="btn btn-success btn-sm">
+                <h5>📊 Atendimentos</h5>
+
+                <button onclick="exportarExcel()" class="btn btn-success btn-sm">
                     Exportar Excel
                 </button>
             </div>
@@ -109,46 +106,40 @@
                     <tr>
                         <th>OS</th>
                         <th>Cliente</th>
-                        <th>Equipamento</th>
                         <th>Defeito</th>
-                        <th>Orçamento</th>
-                        <th>Data</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
+
                 <tbody id="lista"></tbody>
+
             </table>
 
         </div>
 
     </div>
-
 </div>
 
-<!-- ================= MODAL EDITAR ================= -->
+<!-- ================= MODAL ================= -->
 <div class="modal fade" id="modalEditar" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title">Editar OS</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <h5>Editar OS</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <div class="modal-body">
-        <input id="edit_cliente" class="form-control mb-2" placeholder="Cliente">
-        <input id="edit_descricao" class="form-control mb-2" placeholder="Descrição">
-        <input id="edit_status" class="form-control" placeholder="Status">
+        <input id="edit_cliente" class="form-control mb-2">
+        <input id="edit_descricao" class="form-control mb-2">
+        <input id="edit_status" class="form-control">
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button onclick="salvarEdicao()" class="btn btn-primary">
-          Salvar
-        </button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button onclick="salvarEdicao()" class="btn btn-primary">Salvar</button>
       </div>
 
     </div>
