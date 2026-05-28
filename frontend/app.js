@@ -1,6 +1,6 @@
 console.log("JS OK ✅");
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://sistema-os-akw3.onrender.com";
 
 let token = localStorage.getItem("token");
 let idEditando = null;
