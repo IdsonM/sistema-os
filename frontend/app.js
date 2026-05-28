@@ -213,3 +213,73 @@ window.exportarExcel = function () {
         link.click();
     });
 };
+window.imprimirOS = function(id){
+
+    fetch(API_URL + "/os/")
+    .then(res => res.json())
+    .then(data => {
+
+        const os = data.find(o => o.id === id);
+
+        const janela = window.open('', '', 'width=700,height=700');
+
+        janela.document.write(`
+        <html>
+        <head>
+            <title>Recibo OS</title>
+            <style>
+                body {
+                    font-family: Arial;
+                    padding: 20px;
+                }
+                h2 {
+                    text-align: center;
+                }
+                .linha {
+                    margin-bottom: 10px;
+                }
+                .box {
+                    border: 1px solid #000;
+                    padding: 15px;
+                    margin-top: 10px;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <h2>📄 ORDEM DE SERVIÇO</h2>
+
+            <div class="box">
+                <h4>🏢 Dados da Empresa</h4>
+                <div class="linha"><b>Empresa:</b> Malato'sTech</div>
+                <div class="linha"><b>CNPJ:</b> 00.000.000/0001-00</div>
+                <div class="linha"><b>Endereço:</b> Curitiba - PR</div>
+                <div class="linha"><b>Telefone:</b> (41) 99999-9999</div>
+            </div>
+
+            <div class="box">
+                <h4>👤 Dados do Cliente</h4>
+                <div class="linha"><b>Cliente:</b> ${os.cliente}</div>
+            </div>
+
+            <div class="box">
+                <h4>🛠 Serviço</h4>
+                <div class="linha"><b>Descrição:</b> ${os.descricao}</div>
+                <div class="linha"><b>Status:</b> ${os.status}</div>
+            </div>
+
+            <br><br>
+
+            <div>
+                ___________________________<br>
+                Assinatura do Cliente
+            </div>
+
+        </body>
+        </html>
+        `);
+
+        janela.print();
+    });
+};
