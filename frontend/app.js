@@ -67,28 +67,28 @@ window.listarOS = function () {
 
         const lista = document.getElementById("lista");
         lista.innerHTML = "";
+data.forEach(function(os){
 
-        data.forEach(function(os){
+    const tr = document.createElement("tr");
 
-            const li = document.createElement("li");
-            li.className = "list-group-item";
+    tr.innerHTML = `
+        <td>${os.id}</td>
+        <td>${os.cliente}</td>
+        <td>${os.descricao}</td>
+        <td><span class="badge bg-warning">${os.status}</span></td>
 
-            li.innerHTML = `
-                <b>${os.id}</b> - ${os.cliente} - ${os.status}
-                <br>${os.descricao}<br><br>
+        <td>
+            <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm">✏️</button>
 
-                <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm me-2">
-                    Editar
-                </button>
+            <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm">🗑</button>
 
-                <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm">
-                    Excluir
-                </button>
-            `;
+            <button onclick="imprimirOS(${os.id})" class="btn btn-info btn-sm">🖨</button>
+        </td>
+    `;
 
-            lista.appendChild(li);
-        });
+    lista.appendChild(tr);
     });
+});
 };
 
 
