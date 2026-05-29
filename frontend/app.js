@@ -17,11 +17,7 @@ window.login = function () {
         })
     })
     .then(res => {
-
-        if (!res.ok) {
-            throw new Error("Login inválido");
-        }
-
+        if (!res.ok) throw new Error();
         return res.json();
     })
     .then(data => {
@@ -32,8 +28,7 @@ window.login = function () {
         document.getElementById("app").style.display = "block";
 
         document.getElementById("user-info").innerText =
-        "Bem-vindo, " + username;
-
+            "Bem-vindo, " + username;
     })
     .catch(() => {
         alert("Usuário ou senha inválidos ❌");
@@ -71,13 +66,11 @@ window.listarOS = function () {
                 <td>${os.cliente}</td>
                 <td>${os.equipamento || '-'}</td>
                 <td class="text-success">R$ ${os.orcamento || '-'}</td>
-
                 <td>
                     <span class="badge ${cor}">
                         ${os.status}
                     </span>
                 </td>
-
                 <td>
                     <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm me-1">✏️</button>
                     <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm me-1">🗑</button>
@@ -102,9 +95,7 @@ window.criarOS = function () {
 
     fetch(API_URL + "/os/", {
         method: "POST",
-        headers: {
-            "Content-Type":"application/json"
-        },
+        headers: { "Content-Type":"application/json" },
         body: JSON.stringify({
             cliente,
             descricao,
@@ -119,16 +110,59 @@ window.criarOS = function () {
 
 // ================= EDITAR =================
 window.editarOS = function(id){
-    alert("Editar OS ID: " + id);
+
+    fetch(API_URL + "/os/")
+    .then(res => res.json())
+    .then(data => {
+
+        const os = data.find(o => o.id === id);
+        if (!os) return;
+
+        const cliente = prompt("Cliente:", os.cliente);
+        const descricao = prompt("Descrição:", os.descricao);
+        const status = prompt("Status:", os.status);
+        const equipamento = prompt("Equipamento:", os.equipamento);
+        const orcamento = prompt("Orçamento:", os.orcamento);
+        const dataEntrada = prompt("Data:", os.data);
+
+        if (cliente === null) return;
+
+        fetch(API_URL + "/os/" + id, {
+            method: "PUT",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+                cliente,
+                descricao,
+                status,
+                equipamento,
+                orcamento,
+                data: dataEntrada
+            })
+        })
+        .then(() => listarOS());
+    });
 };
 
 // ================= DELETAR =================
 window.deletarOS = function(id){
 
+    const confirmar = confirm("Deseja realmente excluir?");
+
+    if (!confirmar) return;
+
     fetch(API_URL + "/os/" + id, {
         method: "DELETE"
     })
-    .then(() => listarOS());
+    .then(res => {
+        if (!res.ok) throw new Error();
+    })
+    .then(() => {
+        alert("Excluído com sucesso ✅");
+        listarOS();
+    })
+    .catch(() => {
+        alert("Erro ao excluir ❌");
+    });
 };
 
 // ================= FILTRO =================
@@ -138,15 +172,8 @@ window.filtrarOS = function () {
     const linhas = document.querySelectorAll("#lista tr");
 
     linhas.forEach(linha => {
-
-        const texto = linha.innerText.toLowerCase();
-
-        if (texto.includes(termo)) {
-            linha.style.display = "";
-        } else {
-            linha.style.display = "none";
-        }
-
+        linha.style.display =
+            linha.innerText.toLowerCase().includes(termo) ? "" : "none";
     });
 };
 
@@ -163,11 +190,10 @@ window.exportarExcel = function () {
             csv += `${os.id};${os.cliente};${os.equipamento};${os.descricao};${os.status}\n`;
         });
 
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-        const url = URL.createObjectURL(blob);
-
+        const blob = new Blob([csv]);
         const link = document.createElement("a");
-        link.href = url;
+
+        link.href = URL.createObjectURL(blob);
         link.download = "ordens_servico.csv";
         link.click();
     });
@@ -182,31 +208,26 @@ window.imprimirOS = function(id){
 
         const os = data.find(o => o.id === id);
 
-        const tela = window.open("", "", "width=600,height=700");
+        const tela = window.open('', '', 'width=600,height=700');
 
         tela.document.write(`
-            <html>
-            <body style="font-family: Arial; padding:20px;">
-                <h2>📄 Ordem de Serviço</h2>
-                <hr>
-                <p><b>Empresa:</b> Malato'sTech</p>
-                <p><b>Cliente:</b> ${os.cliente}</p>
-                <p><b>Equipamento:</b> ${os.equipamento || '-'}</p>
-                <p><b>Descrição:</b> ${os.descricao}</p>
-                <p><b>Status:</b> ${os.status}</p>
-                <hr>
-                <br><br>
-                ___________________________<br>
-                Assinatura do Cliente
-            </body>
-            </html>
+            <h2>📄 Ordem de Serviço</h2>
+            <hr>
+            <p><b>Empresa:</b> Malato'sTech</p>
+            <p><b>Cliente:</b> ${os.cliente}</p>
+            <p><b>Equipamento:</b> ${os.equipamento || '-'}</p>
+            <p><b>Descrição:</b> ${os.descricao}</p>
+            <p><b>Status:</b> ${os.status}</p>
+            <hr><br><br>
+            ___________________________<br>
+            Assinatura do Cliente
         `);
 
         tela.print();
     });
 };
 
-// ================= INICIALIZA =================
+// ================= INICIAR =================
 document.addEventListener("DOMContentLoaded", () => {
     listarOS();
 });
