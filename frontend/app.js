@@ -11,10 +11,7 @@ window.login = function () {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
+        body: JSON.stringify({ username, password })
     })
     .then(res => {
         if (!res.ok) throw new Error();
@@ -29,6 +26,8 @@ window.login = function () {
 
         document.getElementById("user-info").innerText =
             "Bem-vindo, " + username;
+
+        listarOS();
     })
     .catch(() => {
         alert("Usuário ou senha inválidos ❌");
@@ -44,7 +43,11 @@ window.logout = function () {
 // ================= LISTAR =================
 window.listarOS = function () {
 
-    fetch(API_URL + "/os/")
+    fetch(API_URL + "/os/", {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
     .then(res => res.json())
     .then(data => {
 
@@ -66,11 +69,7 @@ window.listarOS = function () {
                 <td>${os.cliente}</td>
                 <td>${os.equipamento || '-'}</td>
                 <td class="text-success">R$ ${os.orcamento || '-'}</td>
-                <td>
-                    <span class="badge ${cor}">
-                        ${os.status}
-                    </span>
-                </td>
+                <td><span class="badge ${cor}">${os.status}</span></td>
                 <td>
                     <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm me-1">✏️</button>
                     <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm me-1">🗑</button>
@@ -95,7 +94,10 @@ window.criarOS = function () {
 
     fetch(API_URL + "/os/", {
         method: "POST",
-        headers: { "Content-Type":"application/json" },
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
         body: JSON.stringify({
             cliente,
             descricao,
@@ -111,7 +113,11 @@ window.criarOS = function () {
 // ================= EDITAR =================
 window.editarOS = function(id){
 
-    fetch(API_URL + "/os/")
+    fetch(API_URL + "/os/", {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
     .then(res => res.json())
     .then(data => {
 
@@ -119,17 +125,20 @@ window.editarOS = function(id){
         if (!os) return;
 
         const cliente = prompt("Cliente:", os.cliente);
+        if (cliente === null) return;
+
         const descricao = prompt("Descrição:", os.descricao);
         const status = prompt("Status:", os.status);
         const equipamento = prompt("Equipamento:", os.equipamento);
         const orcamento = prompt("Orçamento:", os.orcamento);
         const dataEntrada = prompt("Data:", os.data);
 
-        if (cliente === null) return;
-
         fetch(API_URL + "/os/" + id, {
             method: "PUT",
-            headers: {"Content-Type":"application/json"},
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             body: JSON.stringify({
                 cliente,
                 descricao,
@@ -151,7 +160,10 @@ window.deletarOS = function(id){
     if (!confirmar) return;
 
     fetch(API_URL + "/os/" + id, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
     })
     .then(res => {
         if (!res.ok) throw new Error();
@@ -180,21 +192,25 @@ window.filtrarOS = function () {
 // ================= EXPORTAR =================
 window.exportarExcel = function () {
 
-    fetch(API_URL + "/os/")
+    fetch(API_URL + "/os/", {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
     .then(res => res.json())
     .then(data => {
 
-        let csv = "ID;Cliente;Equipamento;Descrição;Status\n";
+        let csv = "ID;Cliente;Equipamento;Orçamento;Status\n";
 
         data.forEach(os => {
-            csv += `${os.id};${os.cliente};${os.equipamento};${os.descricao};${os.status}\n`;
+            csv += `${os.id};${os.cliente};${os.equipamento};${os.orcamento};${os.status}\n`;
         });
 
         const blob = new Blob([csv]);
         const link = document.createElement("a");
 
         link.href = URL.createObjectURL(blob);
-        link.download = "ordens_servico.csv";
+        link.download = "os.csv";
         link.click();
     });
 };
@@ -202,7 +218,11 @@ window.exportarExcel = function () {
 // ================= IMPRIMIR =================
 window.imprimirOS = function(id){
 
-    fetch(API_URL + "/os/")
+    fetch(API_URL + "/os/", {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
     .then(res => res.json())
     .then(data => {
 
@@ -218,6 +238,7 @@ window.imprimirOS = function(id){
             <p><b>Equipamento:</b> ${os.equipamento || '-'}</p>
             <p><b>Descrição:</b> ${os.descricao}</p>
             <p><b>Status:</b> ${os.status}</p>
+            <p><b>Orçamento:</b> R$ ${os.orcamento || '-'}</p>
             <hr><br><br>
             ___________________________<br>
             Assinatura do Cliente
@@ -226,8 +247,3 @@ window.imprimirOS = function(id){
         tela.print();
     });
 };
-
-// ================= INICIAR =================
-document.addEventListener("DOMContentLoaded", () => {
-    listarOS();
-});
