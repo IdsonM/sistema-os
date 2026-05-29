@@ -1,0 +1,802 @@
+[
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.db.session",
+        "description": "app.db.session",
+        "isExtraImport": true,
+        "detail": "app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.db.session",
+        "description": "app.db.session",
+        "isExtraImport": true,
+        "detail": "app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "app.services.auth_service",
+        "description": "app.services.auth_service",
+        "isExtraImport": true,
+        "detail": "app.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "app.services.auth_service",
+        "description": "app.services.auth_service",
+        "isExtraImport": true,
+        "detail": "app.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "OS",
+        "importPath": "app.models.os_model",
+        "description": "app.models.os_model",
+        "isExtraImport": true,
+        "detail": "app.models.os_model",
+        "documentation": {}
+    },
+    {
+        "label": "OS",
+        "importPath": "app.models.os_model",
+        "description": "app.models.os_model",
+        "isExtraImport": true,
+        "detail": "app.models.os_model",
+        "documentation": {}
+    },
+    {
+        "label": "create_token",
+        "importPath": "app.core.security",
+        "description": "app.core.security",
+        "isExtraImport": true,
+        "detail": "app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "create_token",
+        "importPath": "app.core.security",
+        "description": "app.core.security",
+        "isExtraImport": true,
+        "detail": "app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrder",
+        "importPath": "app.models.work_order",
+        "description": "app.models.work_order",
+        "isExtraImport": true,
+        "detail": "app.models.work_order",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "os_router",
+        "importPath": "app.routers",
+        "description": "app.routers",
+        "isExtraImport": true,
+        "detail": "app.routers",
+        "documentation": {}
+    },
+    {
+        "label": "auth_router",
+        "importPath": "app.routers",
+        "description": "app.routers",
+        "isExtraImport": true,
+        "detail": "app.routers",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "kind": 2,
+        "importPath": "backend.app.core.deps",
+        "description": "backend.app.core.deps",
+        "peekOfCode": "def get_current_user(token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload[\"sub\"]\n    except:\n        raise HTTPException(status_code=401, detail=\"Token inválido\")",
+        "detail": "backend.app.core.deps",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "backend.app.core.deps",
+        "description": "backend.app.core.deps",
+        "peekOfCode": "SECRET_KEY = \"seu_segredo\"\nALGORITHM = \"HS256\"\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\ndef get_current_user(token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload[\"sub\"]\n    except:\n        raise HTTPException(status_code=401, detail=\"Token inválido\")",
+        "detail": "backend.app.core.deps",
+        "documentation": {}
+    },
+    {
+        "label": "ALGORITHM",
+        "kind": 5,
+        "importPath": "backend.app.core.deps",
+        "description": "backend.app.core.deps",
+        "peekOfCode": "ALGORITHM = \"HS256\"\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\ndef get_current_user(token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload[\"sub\"]\n    except:\n        raise HTTPException(status_code=401, detail=\"Token inválido\")",
+        "detail": "backend.app.core.deps",
+        "documentation": {}
+    },
+    {
+        "label": "oauth2_scheme",
+        "kind": 5,
+        "importPath": "backend.app.core.deps",
+        "description": "backend.app.core.deps",
+        "peekOfCode": "oauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/auth/login\")\ndef get_current_user(token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload[\"sub\"]\n    except:\n        raise HTTPException(status_code=401, detail=\"Token inválido\")",
+        "detail": "backend.app.core.deps",
+        "documentation": {}
+    },
+    {
+        "label": "create_token",
+        "kind": 2,
+        "importPath": "backend.app.core.security",
+        "description": "backend.app.core.security",
+        "peekOfCode": "def create_token(data: dict):\n    expire = datetime.utcnow() + timedelta(minutes=60)\n    data.update({\"exp\": expire})\n    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)",
+        "detail": "backend.app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "backend.app.core.security",
+        "description": "backend.app.core.security",
+        "peekOfCode": "SECRET_KEY = \"segredo\"\nALGORITHM = \"HS256\"\ndef create_token(data: dict):\n    expire = datetime.utcnow() + timedelta(minutes=60)\n    data.update({\"exp\": expire})\n    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)",
+        "detail": "backend.app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "ALGORITHM",
+        "kind": 5,
+        "importPath": "backend.app.core.security",
+        "description": "backend.app.core.security",
+        "peekOfCode": "ALGORITHM = \"HS256\"\ndef create_token(data: dict):\n    expire = datetime.utcnow() + timedelta(minutes=60)\n    data.update({\"exp\": expire})\n    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)",
+        "detail": "backend.app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "backend.app.db.session",
+        "description": "backend.app.db.session",
+        "peekOfCode": "DATABASE_URL = \"sqlite:///./test.db\"\nengine = create_engine(\n    DATABASE_URL,\n    connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "backend.app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "backend.app.db.session",
+        "description": "backend.app.db.session",
+        "peekOfCode": "engine = create_engine(\n    DATABASE_URL,\n    connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "backend.app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "backend.app.db.session",
+        "description": "backend.app.db.session",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "backend.app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "backend.app.db.session",
+        "description": "backend.app.db.session",
+        "peekOfCode": "Base = declarative_base()",
+        "detail": "backend.app.db.session",
+        "documentation": {}
+    },
+    {
+        "label": "OS",
+        "kind": 6,
+        "importPath": "backend.app.models.os_model",
+        "description": "backend.app.models.os_model",
+        "peekOfCode": "class OS(Base):\n    __tablename__ = \"os\"\n    id = Column(Integer, primary_key=True, index=True)\n    cliente = Column(String)\n    descricao = Column(String)\n    status = Column(String)\n    equipamento = Column(String)\n    orcamento = Column(String)\n    data = Column(String)",
+        "detail": "backend.app.models.os_model",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrder",
+        "kind": 6,
+        "importPath": "backend.app.models.work_order",
+        "description": "backend.app.models.work_order",
+        "peekOfCode": "class WorkOrder(Base):\n    __tablename__ = \"work_orders\"\n    id = Column(Integer, primary_key=True, index=True)\n    cliente = Column(String, index=True)\n    descricao = Column(String)\n    status = Column(String)",
+        "detail": "backend.app.models.work_order",
+        "documentation": {}
+    },
+    {
+        "label": "LoginRequest",
+        "kind": 6,
+        "importPath": "backend.app.routers.auth_router",
+        "description": "backend.app.routers.auth_router",
+        "peekOfCode": "class LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,",
+        "detail": "backend.app.routers.auth_router",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "backend.app.routers.auth_router",
+        "description": "backend.app.routers.auth_router",
+        "peekOfCode": "def login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,\n        \"token_type\": \"bearer\"\n    }",
+        "detail": "backend.app.routers.auth_router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.routers.auth_router",
+        "description": "backend.app.routers.auth_router",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Auth\"])\nclass LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {",
+        "detail": "backend.app.routers.auth_router",
+        "documentation": {}
+    },
+    {
+        "label": "listar",
+        "kind": 2,
+        "importPath": "backend.app.routers.os_router",
+        "description": "backend.app.routers.os_router",
+        "peekOfCode": "def listar():\n    db = SessionLocal()\n    dados = db.query(OS).all()\n    db.close()\n    return dados\n# ================= CRIAR =================\n@router.post(\"/\")\ndef criar(os: dict):\n    db = SessionLocal()\n    nova_os = OS(",
+        "detail": "backend.app.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "criar",
+        "kind": 2,
+        "importPath": "backend.app.routers.os_router",
+        "description": "backend.app.routers.os_router",
+        "peekOfCode": "def criar(os: dict):\n    db = SessionLocal()\n    nova_os = OS(\n        cliente=os[\"cliente\"],\n        descricao=os[\"descricao\"],\n        status=os[\"status\"],\n        equipamento=os.get(\"equipamento\"),\n        orcamento=os.get(\"orcamento\"),\n        data=os.get(\"data\")\n    )",
+        "detail": "backend.app.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "atualizar",
+        "kind": 2,
+        "importPath": "backend.app.routers.os_router",
+        "description": "backend.app.routers.os_router",
+        "peekOfCode": "def atualizar(id: int, nova_os: dict):\n    db = SessionLocal()\n    os_db = db.query(OS).filter(OS.id == id).first()\n    if os_db:\n        os_db.cliente = nova_os.get(\"cliente\")\n        os_db.descricao = nova_os.get(\"descricao\")\n        os_db.status = nova_os.get(\"status\")\n        os_db.equipamento = nova_os.get(\"equipamento\")\n        os_db.orcamento = nova_os.get(\"orcamento\")\n        os_db.data = nova_os.get(\"data\")",
+        "detail": "backend.app.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "deletar",
+        "kind": 2,
+        "importPath": "backend.app.routers.os_router",
+        "description": "backend.app.routers.os_router",
+        "peekOfCode": "def deletar(id: int):\n    db = SessionLocal()\n    os_db = db.query(OS).filter(OS.id == id).first()\n    if os_db:\n        db.delete(os_db)\n        db.commit()\n    db.close()\n    return {\"msg\": \"deletado\"}",
+        "detail": "backend.app.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.routers.os_router",
+        "description": "backend.app.routers.os_router",
+        "peekOfCode": "router = APIRouter(prefix=\"/os\", tags=[\"OS\"])\n# ================= LISTAR =================\n@router.get(\"/\")\ndef listar():\n    db = SessionLocal()\n    dados = db.query(OS).all()\n    db.close()\n    return dados\n# ================= CRIAR =================\n@router.post(\"/\")",
+        "detail": "backend.app.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas.work_order_schema",
+        "description": "backend.app.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderBase(BaseModel):\n    cliente: str\n    descricao: str\n    status: str\nclass WorkOrderCreate(WorkOrderBase):\n    pass\nclass WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.app.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas.work_order_schema",
+        "description": "backend.app.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderCreate(WorkOrderBase):\n    pass\nclass WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.app.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas.work_order_schema",
+        "description": "backend.app.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.app.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "kind": 2,
+        "importPath": "backend.app.services.auth_service",
+        "description": "backend.app.services.auth_service",
+        "peekOfCode": "def authenticate(username: str, password: str):\n    if username == fake_user[\"username\"] and password == fake_user[\"password\"]:\n        return create_token({\"sub\": username})\n    return None",
+        "detail": "backend.app.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "fake_user",
+        "kind": 5,
+        "importPath": "backend.app.services.auth_service",
+        "description": "backend.app.services.auth_service",
+        "peekOfCode": "fake_user = {\n    \"username\": \"admin\",\n    \"password\": \"123456\"\n}\ndef authenticate(username: str, password: str):\n    if username == fake_user[\"username\"] and password == fake_user[\"password\"]:\n        return create_token({\"sub\": username})\n    return None",
+        "detail": "backend.app.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "kind": 2,
+        "importPath": "backend.app.services.work_order_service",
+        "description": "backend.app.services.work_order_service",
+        "peekOfCode": "def authenticate(username: str, password: str):\n    if username == fake_user[\"username\"] and password == fake_user[\"password\"]:\n        return create_token({\"sub\": username})\n    return None\n#from sqlalchemy.orm import Session\n#from app.models.work_order import WorkOrder\n#def create_os(db: Session, os_data):\n    #db_os = WorkOrder(**os_data.dict())\n    #db.add(db_os)\n    #db.commit()",
+        "detail": "backend.app.services.work_order_service",
+        "documentation": {}
+    },
+    {
+        "label": "fake_user",
+        "kind": 5,
+        "importPath": "backend.app.services.work_order_service",
+        "description": "backend.app.services.work_order_service",
+        "peekOfCode": "fake_user = {\n    \"username\": \"admin\",\n    \"password\": \"123456\"\n}\ndef authenticate(username: str, password: str):\n    if username == fake_user[\"username\"] and password == fake_user[\"password\"]:\n        return create_token({\"sub\": username})\n    return None\n#from sqlalchemy.orm import Session\n#from app.models.work_order import WorkOrder",
+        "detail": "backend.app.services.work_order_service",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "DATABASE_URL = \"sqlite:///./os.db\"\n# engine = conexão com o banco\nengine = create_engine(DATABASE_URL)\n# Sessão do banco (usado para fazer operações)\nSessionLocal = sessionmaker(bind=engine)\n# Base para os models\nBase = declarative_base()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\n# Sessão do banco (usado para fazer operações)\nSessionLocal = sessionmaker(bind=engine)\n# Base para os models\nBase = declarative_base()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "SessionLocal = sessionmaker(bind=engine)\n# Base para os models\nBase = declarative_base()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "Base = declarative_base()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "LoginRequest",
+        "kind": 6,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "class LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "def login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,\n        \"token_type\": \"bearer\"\n    }\n#from fastapi import APIRouter\n#router = APIRouter(prefix=\"/os\", tags=[\"OS\"])",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Auth\"])\nclass LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "#router",
+        "kind": 5,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "#router = APIRouter(prefix=\"/os\", tags=[\"OS\"])\n#@router.get(\"/\")\n#def teste():\n    #return {\"msg\": \"rota funcionando ✅\"}",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderBase",
+        "kind": 6,
+        "importPath": "backend.schemas.work_order_schema",
+        "description": "backend.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderBase(BaseModel):\n    cliente: str\n    descricao: str\n    status: str\nclass WorkOrderCreate(WorkOrderBase):\n    pass\nclass WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderCreate",
+        "kind": 6,
+        "importPath": "backend.schemas.work_order_schema",
+        "description": "backend.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderCreate(WorkOrderBase):\n    pass\nclass WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkOrderResponse",
+        "kind": 6,
+        "importPath": "backend.schemas.work_order_schema",
+        "description": "backend.schemas.work_order_schema",
+        "peekOfCode": "class WorkOrderResponse(WorkOrderBase):\n    id: int\n    class Config:\n        orm_mode = True",
+        "detail": "backend.schemas.work_order_schema",
+        "documentation": {}
+    },
+    {
+        "label": "create_os",
+        "kind": 2,
+        "importPath": "backend.services.work_order_service",
+        "description": "backend.services.work_order_service",
+        "peekOfCode": "def create_os(db: Session, os_data):\n    db_os = WorkOrder(**os_data.dict())\n    db.add(db_os)\n    db.commit()\n    db.refresh(db_os)\n    return db_os\ndef get_all_os(db: Session):\n    return db.query(WorkOrder).all()\ndef update_os(db: Session, os_id: int, os_data):\n    os = db.query(WorkOrder).filter(WorkOrder.id == os_id).first()",
+        "detail": "backend.services.work_order_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_os",
+        "kind": 2,
+        "importPath": "backend.services.work_order_service",
+        "description": "backend.services.work_order_service",
+        "peekOfCode": "def get_all_os(db: Session):\n    return db.query(WorkOrder).all()\ndef update_os(db: Session, os_id: int, os_data):\n    os = db.query(WorkOrder).filter(WorkOrder.id == os_id).first()\n    if not os:\n        return None\n    os.cliente = os_data.cliente\n    os.descricao = os_data.descricao\n    os.status = os_data.status\n    db.commit()",
+        "detail": "backend.services.work_order_service",
+        "documentation": {}
+    },
+    {
+        "label": "update_os",
+        "kind": 2,
+        "importPath": "backend.services.work_order_service",
+        "description": "backend.services.work_order_service",
+        "peekOfCode": "def update_os(db: Session, os_id: int, os_data):\n    os = db.query(WorkOrder).filter(WorkOrder.id == os_id).first()\n    if not os:\n        return None\n    os.cliente = os_data.cliente\n    os.descricao = os_data.descricao\n    os.status = os_data.status\n    db.commit()\n    db.refresh(os)\n    return os",
+        "detail": "backend.services.work_order_service",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 2,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "def root():\n    return {\"message\": \"API rodando 🚀\"}",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "app = FastAPI()\n# ✅ CORS\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n# ✅ ROTAS",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_os",
+        "kind": 2,
+        "importPath": "frontend.services.api",
+        "description": "frontend.services.api",
+        "peekOfCode": "def get_os():\n    response = requests.get(f\"{BASE_URL}/os/\")\n    return response.json()\ndef create_os(data):\n    response = requests.post(f\"{BASE_URL}/os/\", json=data)\n    return response.json()",
+        "detail": "frontend.services.api",
+        "documentation": {}
+    },
+    {
+        "label": "create_os",
+        "kind": 2,
+        "importPath": "frontend.services.api",
+        "description": "frontend.services.api",
+        "peekOfCode": "def create_os(data):\n    response = requests.post(f\"{BASE_URL}/os/\", json=data)\n    return response.json()",
+        "detail": "frontend.services.api",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_URL",
+        "kind": 5,
+        "importPath": "frontend.services.api",
+        "description": "frontend.services.api",
+        "peekOfCode": "BASE_URL = \"http://127.0.0.1:8000\"\ndef get_os():\n    response = requests.get(f\"{BASE_URL}/os/\")\n    return response.json()\ndef create_os(data):\n    response = requests.post(f\"{BASE_URL}/os/\", json=data)\n    return response.json()",
+        "detail": "frontend.services.api",
+        "documentation": {}
+    }
+]

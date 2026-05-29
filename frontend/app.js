@@ -1,11 +1,4 @@
-console.log("JS OK ✅");
-
 const API_URL = "https://sistema-os-akw3.onrender.com";
-
-let token = localStorage.getItem("token");
-let idEditando = null;
-let modal;
-
 
 // ================= LOGIN =================
 window.login = function () {
@@ -18,45 +11,40 @@ window.login = function () {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ username: username, password: password })
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
     })
     .then(res => {
-        if (!res.ok) throw new Error("Erro login");
+
+        if (!res.ok) {
+            throw new Error("Login inválido");
+        }
+
         return res.json();
     })
     .then(data => {
 
-        token = data.access_token;
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", data.access_token);
 
         document.getElementById("login-box").style.display = "none";
         document.getElementById("app").style.display = "block";
 
-        mostrarUsuario();
-        listarOS();
+        document.getElementById("user-info").innerText =
+        "Bem-vindo, " + username;
+
     })
-    .catch(err => {
-        console.log(err);
-        alert("Erro no login ❌");
+    .catch(() => {
+        alert("Usuário ou senha inválidos ❌");
     });
 };
 
-
 // ================= LOGOUT =================
 window.logout = function () {
-
     localStorage.removeItem("token");
-
-    document.getElementById("app").style.display = "none";
-    document.getElementById("login-box").style.display = "block";
+    location.reload();
 };
-
-
-// ================= MOSTRAR USUARIO =================
-function mostrarUsuario(){
-    document.getElementById("user-info").innerText = "Bem-vindo, admin 👤";
-}
-
 
 // ================= LISTAR =================
 window.listarOS = function () {
@@ -67,30 +55,40 @@ window.listarOS = function () {
 
         const lista = document.getElementById("lista");
         lista.innerHTML = "";
-data.forEach(function(os){
 
-    const tr = document.createElement("tr");
+        data.forEach(os => {
 
-    tr.innerHTML = `
-        <td>${os.id}</td>
-        <td>${os.cliente}</td>
-        <td>${os.descricao}</td>
-        <td><span class="badge bg-warning">${os.status}</span></td>
+            let cor = "bg-secondary";
 
-        <td>
-            <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm">✏️</button>
+            if(os.status.includes("Análise")) cor = "bg-warning text-dark";
+            if(os.status.includes("Reparo")) cor = "bg-primary";
+            if(os.status.includes("Pronto")) cor = "bg-success";
 
-            <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm">🗑</button>
+            const tr = document.createElement("tr");
 
-            <button onclick="imprimirOS(${os.id})" class="btn btn-info btn-sm">🖨</button>
-        </td>
-    `;
+            tr.innerHTML = `
+                <td>#${os.id}</td>
+                <td>${os.cliente}</td>
+                <td>${os.equipamento || '-'}</td>
+                <td class="text-success">R$ ${os.orcamento || '-'}</td>
 
-    lista.appendChild(tr);
+                <td>
+                    <span class="badge ${cor}">
+                        ${os.status}
+                    </span>
+                </td>
+
+                <td>
+                    <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm me-1">✏️</button>
+                    <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm me-1">🗑</button>
+                    <button onclick="imprimirOS(${os.id})" class="btn btn-info btn-sm">🖨</button>
+                </td>
+            `;
+
+            lista.appendChild(tr);
+        });
     });
-});
 };
-
 
 // ================= CRIAR =================
 window.criarOS = function () {
@@ -98,121 +96,84 @@ window.criarOS = function () {
     const cliente = document.getElementById("cliente").value;
     const descricao = document.getElementById("descricao").value;
     const status = document.getElementById("status").value;
-
-    if (!cliente || !descricao || !status) {
-        alert("Preencha todos os campos!");
-        return;
-    }
+    const equipamento = document.getElementById("equipamento").value;
+    const orcamento = document.getElementById("orcamento").value;
+    const data = document.getElementById("data").value;
 
     fetch(API_URL + "/os/", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         },
         body: JSON.stringify({
-            cliente: cliente,
-            descricao: descricao,
-            status: status
+            cliente,
+            descricao,
+            status,
+            equipamento,
+            orcamento,
+            data
         })
     })
-    .then(() => {
-        listarOS();
-    });
+    .then(() => listarOS());
 };
 
-
-// ================= EDITAR (ABRE MODAL) =================
-window.editarOS = function (id) {
-
-    idEditando = id;
-
-    fetch(API_URL + "/os/")
-    .then(res => res.json())
-    .then(data => {
-
-        const os = data.find(o => o.id === id);
-
-        document.getElementById("edit_cliente").value = os.cliente;
-        document.getElementById("edit_descricao").value = os.descricao;
-        document.getElementById("edit_status").value = os.status;
-
-        modal = new bootstrap.Modal(document.getElementById("modalEditar"));
-        modal.show();
-    });
+// ================= EDITAR =================
+window.editarOS = function(id){
+    alert("Editar OS ID: " + id);
 };
 
-
-// ================= SALVAR EDIÇÃO =================
-window.salvarEdicao = function () {
-
-    const cliente = document.getElementById("edit_cliente").value;
-    const descricao = document.getElementById("edit_descricao").value;
-    const status = document.getElementById("edit_status").value;
-
-    fetch(API_URL + "/os/" + idEditando, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            cliente: cliente,
-            descricao: descricao,
-            status: status
-        })
-    })
-    .then(() => {
-        modal.hide();
-        listarOS();
-    });
-};
-
-
-// ================= EXCLUIR =================
+// ================= DELETAR =================
 window.deletarOS = function(id){
-
-    if(!confirm("Deseja realmente excluir?")) return;
 
     fetch(API_URL + "/os/" + id, {
         method: "DELETE"
     })
-    .then(() => {
-        listarOS();
+    .then(() => listarOS());
+};
+
+// ================= FILTRO =================
+window.filtrarOS = function () {
+
+    const termo = document.getElementById("busca").value.toLowerCase();
+    const linhas = document.querySelectorAll("#lista tr");
+
+    linhas.forEach(linha => {
+
+        const texto = linha.innerText.toLowerCase();
+
+        if (texto.includes(termo)) {
+            linha.style.display = "";
+        } else {
+            linha.style.display = "none";
+        }
+
     });
 };
 
-
-// ================= AUTO LOGIN =================
-window.onload = function(){
-
-    if(token){
-        document.getElementById("login-box").style.display = "none";
-        document.getElementById("app").style.display = "block";
-
-        mostrarUsuario();
-        listarOS();
-    }
-};
+// ================= EXPORTAR =================
 window.exportarExcel = function () {
 
     fetch(API_URL + "/os/")
     .then(res => res.json())
     .then(data => {
 
-        let csv = "ID;Cliente;Descrição;Status\n";
+        let csv = "ID;Cliente;Equipamento;Descrição;Status\n";
 
         data.forEach(os => {
-            csv += `${os.id};${os.cliente};${os.descricao};${os.status}\n`;
+            csv += `${os.id};${os.cliente};${os.equipamento};${os.descricao};${os.status}\n`;
         });
 
         const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
 
         const link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "ordens_servico.csv");
+        link.href = url;
+        link.download = "ordens_servico.csv";
         link.click();
     });
 };
+
+// ================= IMPRIMIR =================
 window.imprimirOS = function(id){
 
     fetch(API_URL + "/os/")
@@ -221,65 +182,31 @@ window.imprimirOS = function(id){
 
         const os = data.find(o => o.id === id);
 
-        const janela = window.open('', '', 'width=700,height=700');
+        const tela = window.open("", "", "width=600,height=700");
 
-        janela.document.write(`
-        <html>
-        <head>
-            <title>Recibo OS</title>
-            <style>
-                body {
-                    font-family: Arial;
-                    padding: 20px;
-                }
-                h2 {
-                    text-align: center;
-                }
-                .linha {
-                    margin-bottom: 10px;
-                }
-                .box {
-                    border: 1px solid #000;
-                    padding: 15px;
-                    margin-top: 10px;
-                }
-            </style>
-        </head>
-
-        <body>
-
-            <h2>📄 ORDEM DE SERVIÇO</h2>
-
-            <div class="box">
-                <h4>🏢 Dados da Empresa</h4>
-                <div class="linha"><b>Empresa:</b> Malato'sTech</div>
-                <div class="linha"><b>CNPJ:</b> 00.000.000/0001-00</div>
-                <div class="linha"><b>Endereço:</b> Curitiba - PR</div>
-                <div class="linha"><b>Telefone:</b> (41) 99999-9999</div>
-            </div>
-
-            <div class="box">
-                <h4>👤 Dados do Cliente</h4>
-                <div class="linha"><b>Cliente:</b> ${os.cliente}</div>
-            </div>
-
-            <div class="box">
-                <h4>🛠 Serviço</h4>
-                <div class="linha"><b>Descrição:</b> ${os.descricao}</div>
-                <div class="linha"><b>Status:</b> ${os.status}</div>
-            </div>
-
-            <br><br>
-
-            <div>
+        tela.document.write(`
+            <html>
+            <body style="font-family: Arial; padding:20px;">
+                <h2>📄 Ordem de Serviço</h2>
+                <hr>
+                <p><b>Empresa:</b> Malato'sTech</p>
+                <p><b>Cliente:</b> ${os.cliente}</p>
+                <p><b>Equipamento:</b> ${os.equipamento || '-'}</p>
+                <p><b>Descrição:</b> ${os.descricao}</p>
+                <p><b>Status:</b> ${os.status}</p>
+                <hr>
+                <br><br>
                 ___________________________<br>
                 Assinatura do Cliente
-            </div>
-
-        </body>
-        </html>
+            </body>
+            </html>
         `);
 
-        janela.print();
+        tela.print();
     });
 };
+
+// ================= INICIALIZA =================
+document.addEventListener("DOMContentLoaded", () => {
+    listarOS();
+});

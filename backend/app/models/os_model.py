@@ -8,3 +8,7 @@ class OS(Base):
     cliente = Column(String)
     descricao = Column(String)
     status = Column(String)
+
+    equipamento = Column(String)
+    orcamento = Column(String)
+    data = Column(String)

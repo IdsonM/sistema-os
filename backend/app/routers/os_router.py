@@ -22,7 +22,10 @@ def criar(os: dict):
     nova_os = OS(
         cliente=os["cliente"],
         descricao=os["descricao"],
-        status=os["status"]
+        status=os["status"],
+        equipamento=os.get("equipamento"),
+        orcamento=os.get("orcamento"),
+        data=os.get("data")
     )
 
     db.add(nova_os)
@@ -35,17 +38,22 @@ def criar(os: dict):
 
 # ================= EDITAR =================
 @router.put("/{id}")
+@router.put("/{id}")
 def atualizar(id: int, nova_os: dict):
     db = SessionLocal()
 
     os_db = db.query(OS).filter(OS.id == id).first()
 
     if os_db:
-        os_db.cliente = nova_os["cliente"]
-        os_db.descricao = nova_os["descricao"]
-        os_db.status = nova_os["status"]
+        os_db.cliente = nova_os.get("cliente")
+        os_db.descricao = nova_os.get("descricao")
+        os_db.status = nova_os.get("status")
+        os_db.equipamento = nova_os.get("equipamento")
+        os_db.orcamento = nova_os.get("orcamento")
+        os_db.data = nova_os.get("data")
 
         db.commit()
+        db.refresh(os_db)
 
     db.close()
     return os_db
