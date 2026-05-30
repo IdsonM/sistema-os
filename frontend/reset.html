@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Resetar Senha</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0d1b2a;
+    color: white;
+    text-align: center;
+}
+
+.box {
+    background: #1b263b;
+    padding: 20px;
+    margin: 100px auto;
+    width: 300px;
+    border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <h2>🔐 Nova Senha</h2>
+
+    <input id="novaSenha" type="password" placeholder="Nova senha">
+    <input id="confirmarSenha" type="password" placeholder="Confirmar senha">
+
+    <button onclick="resetSenha()">Salvar</button>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+const API_URL = "https://sistema-os-akw3.onrender.com";
+
+function getToken() {
+    const url = new URL(window.location.href);
+    return url.searchParams.get("token");
+}
+
+function resetSenha() {
+
+    const senha = document.getElementById("novaSenha").value;
+    const confirmar = document.getElementById("confirmarSenha").value;
+
+    if (senha !== confirmar) {
+        document.getElementById("msg").innerText =
+            "Senhas não conferem ❌";
+        return;
+    }
+

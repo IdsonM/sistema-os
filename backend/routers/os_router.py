@@ -4,9 +4,12 @@ from app.services.auth_service import authenticate
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
+
+# ================= LOGIN =================
 class LoginRequest(BaseModel):
     username: str
     password: str
+
 
 @router.post("/login")
 def login(data: LoginRequest):
@@ -21,13 +24,23 @@ def login(data: LoginRequest):
     }
 
 
+# ================= RECUPERAR SENHA =================
+class ForgotRequest(BaseModel):
+    email: str
 
 
+@router.post("/forgot")
+def forgot(data: ForgotRequest):
 
-#from fastapi import APIRouter
+    # 🔥 pega usuário (por enquanto só simulação)
+    username = data.email
 
-#router = APIRouter(prefix="/os", tags=["OS"])
+    # 🔥 gera token simples (MVP)
+    token = "reset123"
 
-#@router.get("/")
-#def teste():
-    #return {"msg": "rota funcionando ✅"}
+    print(f"Recuperação solicitada para: {username}")
+    print(f"Token gerado: {token}")
+
+    return {
+        "token": token
+    }

@@ -1,147 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>OS Manager</title>
+<meta charset="UTF-8">
+<title>Sistema OS</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #0d1b2a;
-            color: white;
-        }
+<style>
+body {
+    font-family: Arial;
+    background: #0d1b2a;
+    color: white;
+    text-align: center;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-        }
+/* LOGIN */
+#login-box {
+    background: #1b263b;
+    padding: 20px;
+    margin: 100px auto;
+    width: 300px;
+    border-radius: 10px;
+}
 
-        #login-box {
-            background: #1b263b;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            margin: auto;
-        }
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
 
-        input, select, button {
-            width: 100%;
-            margin: 8px 0;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-        }
+button {
+    padding: 10px;
+    width: 95%;
+    margin: 5px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        button {
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-        }
+/* APP */
+#app {
+    display: none;
+    padding: 20px;
+}
 
-        button:hover {
-            background: #0056b3;
-        }
+table {
+    width: 100%;
+    margin-top: 20px;
+    background: #1b263b;
+}
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
 
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #333;
-        }
-
-        #app {
-            display: none;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- 🔐 LOGIN -->
+<div id="login-box">
 
-    <!-- ================= LOGIN ================= -->
-    <div id="login-box">
-        <h2>🔐 Login</h2>
+    <h2>🔐 Login</h2>
 
-        <form onsubmit="login(event)">
-            <input id="username" type="text" placeholder="Usuário" required>
-            <input id="password" type="password" placeholder="Senha" required>
+    <form onsubmit="login(event)">
+        <input id="username" placeholder="Usuário">
+        <input id="password" type="password" placeholder="Senha">
 
-            <form onsubmit="login(event)"></form>
+        <button type="submit">Entrar</button>
 
-            <!-- ✅ ERRO NA TELA (melhoria) -->
-            <p id="erroLogin" style="color:red; margin-top:10px;"></p>
-        </form>
-    </div>
+        <p id="erroLogin" style="color:red;"></p>
+    </form>
 
-    <!-- ================= APP ================= -->
-    <div id="app">
-
-        <div class="topbar">
-            <h2>Malato'sTech | OS Manager</h2>
-
-            <div>
-                <span id="user-info"></span>
-                <button onclick="logout()">Sair</button>
-            </div>
-        </div>
-
-        <!-- ================= NOVA OS ================= -->
-        <h3>🛠 Nova OS</h3>
-
-        <input id="cliente" placeholder="Cliente">
-        <input id="descricao" placeholder="Descrição">
-        <input id="equipamento" placeholder="Equipamento">
-        <input id="orcamento" placeholder="Orçamento">
-        <input id="data" type="date">
-
-        <select id="status">
-            <option>Em Análise</option>
-            <option>Em Reparo</option>
-            <option>Pronto</option>
-        </select>
-
-        <button onclick="criarOS()">Criar OS</button>
-
-        <!-- ================= BUSCA ================= -->
-        <input id="busca" placeholder="Buscar..." onkeyup="filtrarOS()">
-
-        <!-- ================= TABELA ================= -->
-        <h3>📋 Atendimentos</h3>
-
-        <button onclick="exportarExcel()">Exportar</button>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Cliente</th>
-                    <th>Equipamento</th>
-                    <th>R$</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-
-            <tbody id="lista"></tbody>
-        </table>
-
-    </div>
+    <p onclick="abrirRecuperacao()" style="cursor:pointer; font-size:12px;">
+        Esqueci minha senha
+    </p>
 
 </div>
 
-<!-- SCRIPT -->
+<!-- 🔧 RECUPERAÇÃO -->
+<div id="recuperar" style="display:none;">
+    <h3>Recuperar senha</h3>
+
+    <input id="emailRecuperacao" placeholder="Digite seu usuário">
+
+    <button onclick="recuperarSenha()">Recuperar</button>
+    <button onclick="fecharRecuperacao()">Cancelar</button>
+
+    <p id="msgRecuperacao"></p>
+</div>
+
+<!-- 🚀 APP (TELA 2) -->
+<div id="app">
+
+    <h2>📋 Sistema de Ordens de Serviço</h2>
+
+    <p id="user-info"></p>
+
+    <button onclick="logout()">Sair</button>
+
+    <hr>
+
+    <!-- ➕ NOVA OS -->
+    <h3>Nova OS</h3>
+
+    <input id="cliente" placeholder="Cliente">
+    <input id="descricao" placeholder="Descrição">
+    <input id="status" placeholder="Status">
+
+    <button onclick="criarOS()">Criar OS</button>
+
+    <hr>
+
+    <!-- 📋 LISTA -->
+    <h3>Ordens de Serviço</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Descrição</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="lista"></tbody>
+    </table>
+
+</div>
+
+<!-- ✅ SEU JS -->
 <script src="app.js"></script>
 
 </body>

@@ -1,10 +1,14 @@
 const API_URL = "https://sistema-os-akw3.onrender.com";
 
 // ================= LOGIN =================
-window.login = function () {
+window.login = function (event) {
+    event.preventDefault();
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    const errorElement = document.getElementById("erroLogin");
+
+    if (errorElement) errorElement.innerText = "";
 
     fetch(API_URL + "/auth/login", {
         method: "POST",
@@ -13,37 +17,63 @@ window.login = function () {
         },
         body: JSON.stringify({ username, password })
     })
-    .then(res => {
-        if (!res.ok) throw new Error();
-        return res.json();
+    .then(async res => {
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+            throw new Error(data.message || "Usuário ou senha inválidos");
+        }
+
+        return data;
     })
     .then(data => {
 
-        localStorage.setItem("token", data.access_token);
+        console.log("Login sucesso:", data);
 
+        // ✅ SALVA TOKEN E USER
+        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("user", username);
+
+        // ✅ TROCA TELA
         document.getElementById("login-box").style.display = "none";
         document.getElementById("app").style.display = "block";
 
-        document.getElementById("user-info").innerText =
-            "Bem-vindo, " + username;
+        // ✅ MOSTRA USUÁRIO
+        const userInfo = document.getElementById("user-info");
+        if (userInfo) {
+            userInfo.innerText = "Bem-vindo, " + username;
+        }
 
+        // ✅ CARREGA OS
         listarOS();
     })
-    .catch(() => {
-        alert("Usuário ou senha inválidos ❌");
+    .catch(err => {
+        if (errorElement) {
+            errorElement.innerText = err.message;
+        } else {
+            alert(err.message);
+        }
     });
 };
 
 // ================= LOGOUT =================
-window.logout = function () {
-    localStorage.removeItem("token");
-    location.reload();
-};
+function logout() {
+    localStorage.clear();
 
-// ================= LISTAR =================
-window.listarOS = function () {
+    document.getElementById("app").style.display = "none";
+    document.getElementById("login-box").style.display = "block";
 
-    fetch(API_URL + "/os/", {
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+
+    const erro = document.getElementById("erroLogin");
+    if (erro) erro.innerText = "";
+}
+
+// ================= LISTAR OS =================
+function listarOS() {
+
+    fetch(API_URL + "/os", {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("token")
         }
@@ -56,194 +86,86 @@ window.listarOS = function () {
 
         data.forEach(os => {
 
-            let cor = "bg-secondary";
-
-            if(os.status.includes("Análise")) cor = "bg-warning text-dark";
-            if(os.status.includes("Reparo")) cor = "bg-primary";
-            if(os.status.includes("Pronto")) cor = "bg-success";
-
             const tr = document.createElement("tr");
 
             tr.innerHTML = `
-                <td>#${os.id}</td>
+                <td>${os.id}</td>
                 <td>${os.cliente}</td>
-                <td>${os.equipamento || '-'}</td>
-                <td class="text-success">R$ ${os.orcamento || '-'}</td>
-                <td><span class="badge ${cor}">${os.status}</span></td>
-                <td>
-                    <button onclick="editarOS(${os.id})" class="btn btn-warning btn-sm me-1">✏️</button>
-                    <button onclick="deletarOS(${os.id})" class="btn btn-danger btn-sm me-1">🗑</button>
-                    <button onclick="imprimirOS(${os.id})" class="btn btn-info btn-sm">🖨</button>
-                </td>
+                <td>${os.descricao}</td>
+                <td>${os.status}</td>
             `;
 
             lista.appendChild(tr);
         });
-    });
-};
 
-// ================= CRIAR =================
-window.criarOS = function () {
+    });
+}
+
+// ================= CRIAR OS =================
+function criarOS() {
 
     const cliente = document.getElementById("cliente").value;
     const descricao = document.getElementById("descricao").value;
     const status = document.getElementById("status").value;
-    const equipamento = document.getElementById("equipamento").value;
-    const orcamento = document.getElementById("orcamento").value;
-    const data = document.getElementById("data").value;
 
-    fetch(API_URL + "/os/", {
+    fetch(API_URL + "/os", {
         method: "POST",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
             "Authorization": "Bearer " + localStorage.getItem("token")
         },
         body: JSON.stringify({
             cliente,
             descricao,
-            status,
-            equipamento,
-            orcamento,
-            data
+            status
         })
-    })
-    .then(() => listarOS());
-};
-
-// ================= EDITAR =================
-window.editarOS = function(id){
-
-    fetch(API_URL + "/os/", {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-
-        const os = data.find(o => o.id === id);
-        if (!os) return;
-
-        const cliente = prompt("Cliente:", os.cliente);
-        if (cliente === null) return;
-
-        const descricao = prompt("Descrição:", os.descricao);
-        const status = prompt("Status:", os.status);
-        const equipamento = prompt("Equipamento:", os.equipamento);
-        const orcamento = prompt("Orçamento:", os.orcamento);
-        const dataEntrada = prompt("Data:", os.data);
-
-        fetch(API_URL + "/os/" + id, {
-            method: "PUT",
-            headers: {
-                "Content-Type":"application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            },
-            body: JSON.stringify({
-                cliente,
-                descricao,
-                status,
-                equipamento,
-                orcamento,
-                data: dataEntrada
-            })
-        })
-        .then(() => listarOS());
-    });
-};
-
-// ================= DELETAR =================
-window.deletarOS = function(id){
-
-    const confirmar = confirm("Deseja realmente excluir?");
-
-    if (!confirmar) return;
-
-    fetch(API_URL + "/os/" + id, {
-        method: "DELETE",
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-    })
-    .then(res => {
-        if (!res.ok) throw new Error();
     })
     .then(() => {
-        alert("Excluído com sucesso ✅");
         listarOS();
+    });
+}
+
+// ================= RECUPERAÇÃO =================
+window.abrirRecuperacao = function () {
+    const box = document.getElementById("recuperar");
+    if (box) box.style.display = "block";
+};
+
+window.fecharRecuperacao = function () {
+    const box = document.getElementById("recuperar");
+    if (box) box.style.display = "none";
+};
+
+window.recuperarSenha = function () {
+
+    const email = document.getElementById("emailRecuperacao").value;
+    const msg = document.getElementById("msgRecuperacao");
+
+    if (!email) {
+        if (msg) msg.innerText = "Digite o usuário!";
+        return;
+    }
+
+    fetch(API_URL + "/auth/forgot", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        console.log("TOKEN RECEBIDO:", data);
+
+        if (!data.token) {
+            if (msg) msg.innerText = "Erro: backend não retornou token ❌";
+            return;
+        }
+
+        window.location.href = "reset.html?token=" + data.token;
     })
     .catch(() => {
-        alert("Erro ao excluir ❌");
-    });
-};
-
-// ================= FILTRO =================
-window.filtrarOS = function () {
-
-    const termo = document.getElementById("busca").value.toLowerCase();
-    const linhas = document.querySelectorAll("#lista tr");
-
-    linhas.forEach(linha => {
-        linha.style.display =
-            linha.innerText.toLowerCase().includes(termo) ? "" : "none";
-    });
-};
-
-// ================= EXPORTAR =================
-window.exportarExcel = function () {
-
-    fetch(API_URL + "/os/", {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-
-        let csv = "ID;Cliente;Equipamento;Orçamento;Status\n";
-
-        data.forEach(os => {
-            csv += `${os.id};${os.cliente};${os.equipamento};${os.orcamento};${os.status}\n`;
-        });
-
-        const blob = new Blob([csv]);
-        const link = document.createElement("a");
-
-        link.href = URL.createObjectURL(blob);
-        link.download = "os.csv";
-        link.click();
-    });
-};
-
-// ================= IMPRIMIR =================
-window.imprimirOS = function(id){
-
-    fetch(API_URL + "/os/", {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-
-        const os = data.find(o => o.id === id);
-
-        const tela = window.open('', '', 'width=600,height=700');
-
-        tela.document.write(`
-            <h2>📄 Ordem de Serviço</h2>
-            <hr>
-            <p><b>Empresa:</b> Malato'sTech</p>
-            <p><b>Cliente:</b> ${os.cliente}</p>
-            <p><b>Equipamento:</b> ${os.equipamento || '-'}</p>
-            <p><b>Descrição:</b> ${os.descricao}</p>
-            <p><b>Status:</b> ${os.status}</p>
-            <p><b>Orçamento:</b> R$ ${os.orcamento || '-'}</p>
-            <hr><br><br>
-            ___________________________<br>
-            Assinatura do Cliente
-        `);
-
-        tela.print();
+        if (msg) msg.innerText = "Erro ao recuperar senha ❌";
     });
 };

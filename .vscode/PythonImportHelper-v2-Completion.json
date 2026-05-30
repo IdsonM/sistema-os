@@ -24,6 +24,14 @@
         "documentation": {}
     },
     {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -176,6 +184,70 @@
         "documentation": {}
     },
     {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -193,6 +265,14 @@
     },
     {
         "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -225,6 +305,30 @@
     },
     {
         "label": "Base",
+        "importPath": "app.db.base",
+        "description": "app.db.base",
+        "isExtraImport": true,
+        "detail": "app.db.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.db.base",
+        "description": "app.db.base",
+        "isExtraImport": true,
+        "detail": "app.db.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
         "importPath": "app.database",
         "description": "app.database",
         "isExtraImport": true,
@@ -288,19 +392,19 @@
         "documentation": {}
     },
     {
-        "label": "authenticate",
-        "importPath": "app.services.auth_service",
-        "description": "app.services.auth_service",
+        "label": "User",
+        "importPath": "app.models.user",
+        "description": "app.models.user",
         "isExtraImport": true,
-        "detail": "app.services.auth_service",
+        "detail": "app.models.user",
         "documentation": {}
     },
     {
-        "label": "authenticate",
-        "importPath": "app.services.auth_service",
-        "description": "app.services.auth_service",
+        "label": "User",
+        "importPath": "app.models.user",
+        "description": "app.models.user",
         "isExtraImport": true,
-        "detail": "app.services.auth_service",
+        "detail": "app.models.user",
         "documentation": {}
     },
     {
@@ -333,6 +437,14 @@
         "description": "app.core.security",
         "isExtraImport": true,
         "detail": "app.core.security",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "app.services.auth_service",
+        "description": "app.services.auth_service",
+        "isExtraImport": true,
+        "detail": "app.services.auth_service",
         "documentation": {}
     },
     {
@@ -360,11 +472,19 @@
         "documentation": {}
     },
     {
-        "label": "auth_router",
+        "label": "auth",
         "importPath": "app.routers",
         "description": "app.routers",
         "isExtraImport": true,
         "detail": "app.routers",
+        "documentation": {}
+    },
+    {
+        "label": "Empresa",
+        "importPath": "app.models.empresa",
+        "description": "app.models.empresa",
+        "isExtraImport": true,
+        "detail": "app.models.empresa",
         "documentation": {}
     },
     {
@@ -476,12 +596,30 @@
         "documentation": {}
     },
     {
+        "label": "Empresa",
+        "kind": 6,
+        "importPath": "backend.app.models.empresa",
+        "description": "backend.app.models.empresa",
+        "peekOfCode": "class Empresa(Base):\n    __tablename__ = \"empresas\"\n    id = Column(Integer, primary_key=True, index=True)\n    nome = Column(String)\n    plano = Column(String)",
+        "detail": "backend.app.models.empresa",
+        "documentation": {}
+    },
+    {
         "label": "OS",
         "kind": 6,
         "importPath": "backend.app.models.os_model",
         "description": "backend.app.models.os_model",
-        "peekOfCode": "class OS(Base):\n    __tablename__ = \"os\"\n    id = Column(Integer, primary_key=True, index=True)\n    cliente = Column(String)\n    descricao = Column(String)\n    status = Column(String)\n    equipamento = Column(String)\n    orcamento = Column(String)\n    data = Column(String)",
+        "peekOfCode": "class OS(Base):\n    __tablename__ = \"os\"\n    id = Column(Integer, primary_key=True, index=True)\n    cliente = Column(String)\n    descricao = Column(String)\n    status = Column(String)\n    equipamento = Column(String)\n    orcamento = Column(String)\n    data = Column(String)\n    # 🔥 NOVO (ESSENCIAL PARA SAAS)",
         "detail": "backend.app.models.os_model",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "backend.app.models.user",
+        "description": "backend.app.models.user",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String, unique=True, index=True)\n    password = Column(String)\n    # 🔥 ligação com empresa\n    empresa_id = Column(Integer, ForeignKey(\"empresas.id\"))",
+        "detail": "backend.app.models.user",
         "documentation": {}
     },
     {
@@ -496,28 +634,55 @@
     {
         "label": "LoginRequest",
         "kind": 6,
-        "importPath": "backend.app.routers.auth_router",
-        "description": "backend.app.routers.auth_router",
-        "peekOfCode": "class LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,",
-        "detail": "backend.app.routers.auth_router",
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "class LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest, db: Session = Depends(get_db)):\n    # 🔎 busca usuário no banco\n    user = db.query(User).filter(User.username == data.username).first()\n    if not user:\n        raise HTTPException(status_code=401, detail=\"Usuário não encontrado\")\n    if user.password != data.password:",
+        "detail": "backend.app.routers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "ForgotRequest",
+        "kind": 6,
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "class ForgotRequest(BaseModel):\n    email: str\n@router.post(\"/forgot\")\ndef forgot(data: ForgotRequest):\n    print(\"🔥 FORGOT FOI CHAMADO\")\n    # ✅ versão simples (SEM banco para evitar erro 500)\n    token = \"reset123\"\n    print(f\"Token gerado para {data.email}: {token}\")\n    return {\n        \"token\": token",
+        "detail": "backend.app.routers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n# ================= LOGIN =================\nclass LoginRequest(BaseModel):\n    username: str\n    password: str",
+        "detail": "backend.app.routers.auth",
         "documentation": {}
     },
     {
         "label": "login",
         "kind": 2,
-        "importPath": "backend.app.routers.auth_router",
-        "description": "backend.app.routers.auth_router",
-        "peekOfCode": "def login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,\n        \"token_type\": \"bearer\"\n    }",
-        "detail": "backend.app.routers.auth_router",
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "def login(data: LoginRequest, db: Session = Depends(get_db)):\n    # 🔎 busca usuário no banco\n    user = db.query(User).filter(User.username == data.username).first()\n    if not user:\n        raise HTTPException(status_code=401, detail=\"Usuário não encontrado\")\n    if user.password != data.password:\n        raise HTTPException(status_code=401, detail=\"Senha incorreta\")\n    return {\n        \"access_token\": \"token_fake\",\n        \"empresa_id\": user.empresa_id",
+        "detail": "backend.app.routers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "forgot",
+        "kind": 2,
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "def forgot(data: ForgotRequest):\n    print(\"🔥 FORGOT FOI CHAMADO\")\n    # ✅ versão simples (SEM banco para evitar erro 500)\n    token = \"reset123\"\n    print(f\"Token gerado para {data.email}: {token}\")\n    return {\n        \"token\": token\n    }",
+        "detail": "backend.app.routers.auth",
         "documentation": {}
     },
     {
         "label": "router",
         "kind": 5,
-        "importPath": "backend.app.routers.auth_router",
-        "description": "backend.app.routers.auth_router",
-        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Auth\"])\nclass LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {",
-        "detail": "backend.app.routers.auth_router",
+        "importPath": "backend.app.routers.auth",
+        "description": "backend.app.routers.auth",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"auth\"])\n# 🔌 conexão com banco\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n# ================= LOGIN =================\nclass LoginRequest(BaseModel):",
+        "detail": "backend.app.routers.auth",
         "documentation": {}
     },
     {
@@ -674,11 +839,29 @@
         "documentation": {}
     },
     {
+        "label": "ForgotRequest",
+        "kind": 6,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "class ForgotRequest(BaseModel):\n    email: str\n@router.post(\"/forgot\")\ndef forgot(data: ForgotRequest):\n    # 🔥 pega usuário (por enquanto só simulação)\n    username = data.email\n    # 🔥 gera token simples (MVP)\n    token = \"reset123\"\n    print(f\"Recuperação solicitada para: {username}\")\n    print(f\"Token gerado: {token}\")",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
         "label": "login",
         "kind": 2,
         "importPath": "backend.routers.os_router",
         "description": "backend.routers.os_router",
-        "peekOfCode": "def login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,\n        \"token_type\": \"bearer\"\n    }\n#from fastapi import APIRouter\n#router = APIRouter(prefix=\"/os\", tags=[\"OS\"])",
+        "peekOfCode": "def login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {\n        \"access_token\": token,\n        \"token_type\": \"bearer\"\n    }\n# ================= RECUPERAR SENHA =================\nclass ForgotRequest(BaseModel):",
+        "detail": "backend.routers.os_router",
+        "documentation": {}
+    },
+    {
+        "label": "forgot",
+        "kind": 2,
+        "importPath": "backend.routers.os_router",
+        "description": "backend.routers.os_router",
+        "peekOfCode": "def forgot(data: ForgotRequest):\n    # 🔥 pega usuário (por enquanto só simulação)\n    username = data.email\n    # 🔥 gera token simples (MVP)\n    token = \"reset123\"\n    print(f\"Recuperação solicitada para: {username}\")\n    print(f\"Token gerado: {token}\")\n    return {\n        \"token\": token\n    }",
         "detail": "backend.routers.os_router",
         "documentation": {}
     },
@@ -687,16 +870,7 @@
         "kind": 5,
         "importPath": "backend.routers.os_router",
         "description": "backend.routers.os_router",
-        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Auth\"])\nclass LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n    return {",
-        "detail": "backend.routers.os_router",
-        "documentation": {}
-    },
-    {
-        "label": "#router",
-        "kind": 5,
-        "importPath": "backend.routers.os_router",
-        "description": "backend.routers.os_router",
-        "peekOfCode": "#router = APIRouter(prefix=\"/os\", tags=[\"OS\"])\n#@router.get(\"/\")\n#def teste():\n    #return {\"msg\": \"rota funcionando ✅\"}",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Auth\"])\n# ================= LOGIN =================\nclass LoginRequest(BaseModel):\n    username: str\n    password: str\n@router.post(\"/login\")\ndef login(data: LoginRequest):\n    token = authenticate(data.username, data.password)\n    if not token:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")",
         "detail": "backend.routers.os_router",
         "documentation": {}
     },
@@ -768,7 +942,7 @@
         "kind": 5,
         "importPath": "backend.main",
         "description": "backend.main",
-        "peekOfCode": "app = FastAPI()\n# ✅ CORS\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n# ✅ ROTAS",
+        "peekOfCode": "app = FastAPI()\n# ✅ CORS (CORRIGIDO)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # permite Netlify acessar\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n# ✅ ROTAS",
         "detail": "backend.main",
         "documentation": {}
     },
